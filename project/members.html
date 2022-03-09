@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MEMBERS</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./icon/Flaticon.css" />
+    <link rel="stylesheet" type="text/css" href="styleNEMO.css" media="all" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .modal-content {
+            width: 100% !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar sit on top -->
+    <div class="header w3-top">
+        <div class="w3-bar wide font-bar">
+            <a href="setting.html" class="w3-bar-item header-button">
+                <i class="fa fa-reply"
+                    style="font-size: 24px; padding: 12px 2px; vertical-align: baseline; line-height: 0.85;"></i>
+            </a>
+            <button type="button" class="w3-bar-item header-button w3-right" id="memberAdd" data-dismiss="modal"
+                data-toggle="modal" data-target="#memberAddModal">
+                <i class="fa fa-plus"
+                    style="font-size: 24px; padding: 12px 6px; vertical-align: baseline; line-height: 0.85;"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="w3-container" style="margin-top: 80px;">
+        <h3 class="w3-center">
+            family members
+        </h3>
+        <p class="w3-center">
+            See how many members can be recognized by NEMO
+        </p>
+
+        <!-- members -->
+        <div id="memberCards" class="font-ch"></div>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+        <!-- member modal -->
+        <!-- add -->
+        <div class="modal fade" id="memberAddModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="closeToolModal" data-dismiss="modal">&times;</button>
+                        <h4 class="font-en" style="font-weight: 600;">Add New Member</h4>
+                    </div>
+                    <div class="modal-body font-ch">
+                        <form id="edit-form" role="form" class="form-horizontal">
+                            <fieldset>
+                                <!-- name input -->
+                                <div class="form-group">
+                                    <label class="col-6 col-md-8" for="memberName">Name<sup
+                                            style="color: rgb(240, 92, 92)">*</sup>
+                                        <p style="font-size:12px;color:rgb(240, 92, 92);text-transform:none">Only
+                                            letters and spaces</p>
+                                    </label>
+                                    <div class="col-6 col-md-8">
+                                        <input type="text" name="memberName" id="memberName" onchange="checkName()"
+                                            pattern="^(?=.*[A-Za-z])[A-Za-z ]+$" required maxlength="20"
+                                            oninput="setCustomValidity('')"></input>
+                                    </div>
+                                </div>
+                                <!-- take pictures -->
+                                <div class="form-group">
+                                    <p class="col-6 col-md-8">Please stand in front of NEMO to get three face photos.
+                                        <br>Click the button when you are ready.</p>
+                                    <div class="col-6 col-md-8">
+                                        <button type="button" value="1" id="photoBtn1" class="btn photo font-en" style="background-color: #9596C6;
+                                                    border: 2px solid #8c8cb4;">photo 1</button>
+                                        <img class="addPhoto" id="photo1">
+                                        <br>
+                                        <button type="button" value="2" id="photoBtn2" class="btn photo font-en" style="background-color: #9596C6;
+                                                    border: 2px solid #8c8cb4;" disabled>photo 2</button>
+                                        <img class="addPhoto" id="photo2">
+                                        <br>
+                                        <button type="button" value="3" id="photoBtn3" class="btn photo font-en" style="background-color: #9596C6;
+                                                   border: 2px solid #8c8cb4;" disabled>photo 3</button>
+                                        <img class="addPhoto" id="photo3">
+                                    </div>
+                                </div>
+                                <br>
+                                <!-- confirm button -->
+                                <div class="form-group">
+                                    <p class="col-6 col-md-8">Confirm that all three photos have a clear front
+                                        face, press the button below.</p>
+                                    <div class="col-6 col-md-4 col-md-offset-4">
+                                        <button type="button" value="memberUpdateBtn" id="memberUpdateBtn"
+                                            class="btn confirm font-en" style="background-color: #9596C6;
+                                                    border: 2px solid #8c8cb4;">confirm</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+    <script type="text/javascript" src="firebase.js"></script>
+</body>
+<script type="text/javascript" src="members.js"></script>
+
+</html>

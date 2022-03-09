@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NEMO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./icon/Flaticon.css" />
+    <link rel="stylesheet" href="./styleNEMO.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.js"></script>
+</head>
+
+<body onload="checkDefault()">
+    <!-- navbar sit on top -->
+    <div class="header w3-top">
+        <div class="w3-bar wide font-bar">
+            <a href="#nemo" class="w3-bar-item header-button" style="font-size: 28px;">NEMO</a>
+            <a href="setting.html" class="w3-bar-item header-button w3-right">
+                <i class="flaticon-settings"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- contenter (go to the top) -->
+    <div class="w3-row w3-padding-16" id="nemo"></div>
+
+    <div class="w3-content" style="max-width: 1500px">
+        <div class="w3-container w3-padding-64">
+            <ul class="nav nav-tabs font-bar wide">
+                <li class="active">
+                    <a data-toggle="tab" href="#security" class="tabs">home security</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#weather" class="tabs">weather forecast</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#monitor" class="tabs">indoor monitor</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" id="tabDrop" class="dropdown-toggle" data-toggle="dropdown">timing tools <b
+                            class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="tabDrop">
+                        <li><a href="#alarm" tabindex="-1" data-toggle="tab">alarm</a></li>
+                        <li><a href="#memo" tabindex="-1" data-toggle="tab">memo</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="w3-row w3-padding-16" id="nemo"></div>
+
+                <!-- Home Security-->
+                <div id="security" class="tab-pane fade in active">
+                    <!-- real time image -->
+                    <div class="showimage realtime wide font-en txt-dark">
+                        <div>real time image</div>
+                        <img class="realtime" id="img" />
+                        <!-- model -->
+                        <div id="imgModal" class="modal">
+                            <span class="closeImgL">&times;</span>
+                            <img class="modaled" id="imgL" />
+                        </div>
+                        <div class="txt-fade" style="text-align: right">
+                            last updated time :
+                            <div class="breakLine"></div>
+                            <font id="imgTime" style="text-transform: capitalize"></font>
+                        </div>
+                    </div>
+                    <!-- family slider -->
+                    <div class="showimage family wide font-en txt-dark">
+                        <div class="txt-slide" style="background-color: #57be86">
+                            Family
+                        </div>
+                        <div style="position: relative">
+                            <div class="slideFamily">
+                                <img id="familyImg1" src="./default-image.png" class="slide" />
+                            </div>
+                            <div class="slideFamily">
+                                <img id="familyImg2" src="./default-image.png" class="slide" />
+                            </div>
+                            <div class="slideFamily">
+                                <img id="familyImg3" src="./default-image.png" class="slide" />
+                            </div>
+                            <div class="slideFamily">
+                                <img id="familyImg4" src="./default-image.png" class="slide" />
+                            </div>
+                            <div class="slideFamily">
+                                <img id="familyImg5" src="./default-image.png" class="slide" />
+                            </div>
+                            <a class="prev" onclick="plusSlidesFamily(-1)">❮</a>
+                            <a class="next" onclick="plusSlidesFamily(1)">❯</a>
+                        </div>
+                    </div>
+                    <!-- stranger slider -->
+                    <div class="showimage stranger wide font-en txt-dark">
+                        <div class="txt-slide" style="background-color: #bb3c47">
+                            Stranger
+                        </div>
+                        <div style="position: relative">
+                            <div class="slideStranger">
+                                <img id="strangerImg1" src="./default-image.png" class="slide" />
+                            </div>
+                            <div class="slideStranger">
+                                <img id="strangerImg2" src="./default-image.png" class="slide" />
+                            </div>
+                            <div class="slideStranger">
+                                <img id="strangerImg3" src="./default-image.png" class="slide" />
+                            </div>
+                            <div class="slideStranger">
+                                <img id="strangerImg4" src="./default-image.png" class="slide" />
+                            </div>
+                            <div class="slideStranger">
+                                <img id="strangerImg5" src="./default-image.png" class="slide" />
+                            </div>
+                            <a class="prev" onclick="plusSlidesStranger(-1)">❮</a>
+                            <a class="next" onclick="plusSlidesStranger(1)">❯</a>
+                        </div>
+                    </div>
+                    <!-- unknown slider -->
+                    <div class="showimage unknown wide font-en txt-dark">
+                        <div class="txt-slide" style="background-color: #e7c759">
+                            Unknown
+                        </div>
+                        <div style="position: relative">
+                            <div class="slideUnknown">
+                                <img id="unknownImg1" src="./default-image.png" class="slide" />
+                            </div>
+                            <div class="slideUnknown">
+                                <img id="unknownImg2" src="./default-image.png" class="slide" />
+                            </div>
+                            <div class="slideUnknown">
+                                <img id="unknownImg3" src="./default-image.png" class="slide" />
+                            </div>
+                            <div class="slideUnknown">
+                                <img id="unknownImg4" src="./default-image.png" class="slide" />
+                            </div>
+                            <div class="slideUnknown">
+                                <img id="unknownImg5" src="./default-image.png" class="slide" />
+                            </div>
+                            <a class="prev" onclick="plusSlidesUnknown(-1)">❮</a>
+                            <a class="next" onclick="plusSlidesUnknown(1)">❯</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weather Forecast -->
+                <div id="weather" class="tab-pane fade">
+                    <div class="showforecast wide font-en">
+                        <!-- today -->
+                        <div class="today txt-light wide">
+                            <div class="w3-row w3-padding-16"></div>
+                            <div class="todaySession">
+                                <div><img class="largeIcon" id="wxToday" />&nbsp;Today</div>
+                                <p class="txt-small" id="dateToday"></p>
+                            </div>
+                            <div class="w3-row w3-padding-32"></div>
+                            <div class="todaySession">
+                                <div class="txt-small font-ch" id="loc"></div>
+                                <div class="font-en" style="font-size: 64px; font-weight: 300" id="tempToday"></div>
+                            </div>
+                            <div class="w3-row w3-padding-24"></div>
+
+                            <div class="todaySession txt-light txt-medium" style="line-height: 3;">
+                                <div>
+                                    <img class="todayIcon" src="./icon/POP.png" />
+                                    <span id="popToday" style="display: inline"></span>
+                                </div>
+                                <div>
+                                    <img class="todayIcon" src="./icon/WS.png" />
+                                    <span id="wsToday" style="display: inline"></span>
+                                </div>
+                                <div>
+                                    <img class="todayIcon" src="./icon/UVI.png" />
+                                    <span id="uviToday" style="display: inline"></span>
+                                </div>
+                                <div>
+                                    <img class="todayIcon" src="./icon/AQI.png" />
+                                    <span id="aqiToday" style="display: inline"></span>
+                                </div>
+                            </div>
+
+                            <div class="w3-row w3-padding-16"></div>
+                        </div>
+                        <!-- week -->
+                        <div class="week txt-dark">
+                            <div>Week</div>
+                            <div class="w3-row w3-padding-16"></div>
+                            <div class="w3-responsive">
+                                <table class="w3-table txt-medium" style="line-height: 3">
+                                    <tr>
+                                        <td id="dateDay1" class="w3-left-align"></td>
+                                        <td><img class="mediumIcon" id="wxDay1" /></td>
+                                        <td class="w3-left-align">
+                                            <img class="smallIcon" src="./icon/POP.png" />
+                                            <span id="popDay1" style="display: inline"></span>
+                                        </td>
+                                        <td id="minTempDay1" class="w3-right-align"></td>
+                                        <td>
+                                            <div class="basicTemp">
+                                                <div class="realTemp" id="drawTempDay1"></div>
+                                            </div>
+                                        </td>
+                                        <td id="maxTempDay1" class="w3-left-align"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="dateDay2" class="w3-left-align"></td>
+                                        <td><img class="mediumIcon" id="wxDay2" /></td>
+                                        <td class="w3-left-align">
+                                            <img class="smallIcon" src="./icon/POP.png" />
+                                            <span id="popDay2"></span>
+                                        </td>
+                                        <td id="minTempDay2" class="w3-right-align"></td>
+                                        <td class="w3-centered">
+                                            <div class="basicTemp">
+                                                <div class="realTemp" id="drawTempDay2"></div>
+                                            </div>
+                                        </td>
+                                        <td id="maxTempDay2" class="w3-left-align"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="dateDay3" class="w3-left-align"></td>
+                                        <td><img class="mediumIcon" id="wxDay3" /></td>
+                                        <td class="w3-left-align">
+                                            <img class="smallIcon" src="./icon/POP.png" />
+                                            <span id="popDay3"></span>
+                                        </td>
+                                        <td id="minTempDay3" class="w3-right-align"></td>
+                                        <td class="w3-centered">
+                                            <div class="basicTemp">
+                                                <div class="realTemp" id="drawTempDay3"></div>
+                                            </div>
+                                        </td>
+                                        <td id="maxTempDay3" class="w3-left-align"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="dateDay4" class="w3-left-align"></td>
+                                        <td><img class="mediumIcon" id="wxDay4" /></td>
+                                        <td class="w3-left-align">
+                                            <img class="smallIcon" src="./icon/POP.png" />
+                                            <span id="popDay4"></span>
+                                        </td>
+                                        <td id="minTempDay4" class="w3-right-align"></td>
+                                        <td class="w3-centered">
+                                            <div class="basicTemp">
+                                                <div class="realTemp" id="drawTempDay4"></div>
+                                            </div>
+                                        </td>
+                                        <td id="maxTempDay4" class="w3-left-align"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="dateDay5" class="w3-left-align"></td>
+                                        <td><img class="mediumIcon" id="wxDay5" /></td>
+                                        <td class="w3-left-align">
+                                            <img class="smallIcon" src="./icon/POP.png" />
+                                            <span id="popDay5"></span>
+                                        </td>
+                                        <td id="minTempDay5" class="w3-right-align"></td>
+                                        <td class="w3-centered">
+                                            <div class="basicTemp">
+                                                <div class="realTemp" id="drawTempDay5"></div>
+                                            </div>
+                                        </td>
+                                        <td id="maxTempDay5" class="w3-left-align"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="dateDay6" class="w3-left-align"></td>
+                                        <td><img class="mediumIcon" id="wxDay6" /></td>
+                                        <td class="w3-left-align">
+                                            <img class="smallIcon" src="./icon/POP.png" />
+                                            <span id="popDay6"></span>
+                                        </td>
+                                        <td id="minTempDay6" class="w3-right-align"></td>
+                                        <td class="w3-centered">
+                                            <div class="basicTemp">
+                                                <div class="realTemp" id="drawTempDay6"></div>
+                                            </div>
+                                        </td>
+                                        <td id="maxTempDay6" class="w3-left-align"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="dateDay7" class="w3-left-align"></td>
+                                        <td><img class="mediumIcon" id="wxDay7" /></td>
+                                        <td class="w3-left-align">
+                                            <img class="smallIcon" src="./icon/POP.png" />
+                                            <span id="popDay7"></span>
+                                        </td>
+                                        <td id="minTempDay7" class="w3-right-align"></td>
+                                        <td class="w3-centered">
+                                            <div class="basicTemp">
+                                                <div class="realTemp" id="drawTempDay7"></div>
+                                            </div>
+                                        </td>
+                                        <td id="maxTempDay7" class="w3-left-align"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- satellite & radar image -->
+                        <div class="display-weatherImg">
+                            <div class="w3-row w3-padding-16"></div>
+                            <div class="weatherImg wide font-en txt-dark" style="min-width: 300px;">
+                                <div class="txt-slide" style="background-color: #495470">satellite & radar image</div>
+                                <div style="position: relative">
+                                    <div class="slideWeatherImg">
+                                        <!--<a href="https://www.cwb.gov.tw/V8/C/W/OBS_Sat.html"  target="_blank">-->
+                                        <div class="satellite-responsive">
+                                            <img id="weatherimg1"
+                                                src="https://www.cwb.gov.tw/Data/satellite/LCC_IR1_CR_1000/LCC_IR1_CR_1000.jpg"
+                                                class="slide">
+                                        </div>
+                                        <!--</a>-->
+                                    </div>
+                                    <div class="slideWeatherImg">
+                                        <!--<a href="https://www.cwb.gov.tw/V8/C/W/OBS_Radar.html"  target="_blank">-->
+                                        <div class="radar-responsive">
+                                            <img id="weatherimg2" src="https://www.cwb.gov.tw/Data/radar/CV1_3600.png"
+                                                class="slide">
+                                        </div>
+                                        <!--</a>-->
+                                    </div>
+                                    <a class="prev" onclick="plusSlidesWeatherImg(-1)">❮</a>
+                                    <a class="next" onclick="plusSlidesWeatherImg(1)">❯</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Indoor Monitor-->
+                <div id="monitor" class="tab-pane fade">
+                    <div class="showDHT wide font-en txt-dark">
+                        <div>indoor monitor</div>
+                        <div style="margin-top: 25px;"> </div>
+                        <span id="humidity"></span>
+                        <div class="breakLine"> </div>
+                        <span id="temperature"> </span>
+                        <div class="breakLine"> </div>
+                        <sapn id="gas"></sapn>
+                        <div style="margin: 25px 0px;"> </div>
+                        <div class="txt-fade" style="text-align: right">
+                            last update time :
+                            <div class="breakLine"></div>
+                            <font id="dhtTime" style="text-transform: capitalize"></font>
+                        </div>
+                    </div>
+                    <div class="showCanvas font-en txt-dark">
+                        <div class="wide">humidity</div>
+                        <div style="margin: 25px 0px;"> </div>
+                        <canvas id="humidityCanvas" height="370" width="450"></canvas>
+                    </div>
+                    <div class="showCanvas font-en txt-dark">
+                        <div class="wide">temperature</div>
+                        <div style="margin: 25px 0px;"> </div>
+                        <canvas id="temperatureCanvas" height="370" width="450"></canvas>
+                    </div>
+                    <div class="showCanvas font-en txt-dark">
+                        <div class="wide">gas value</div>
+                        <div style="margin: 25px 0px;"> </div>
+                        <canvas id="gasCanvas" height="370" width="450"></canvas>
+                    </div>
+                    
+                </div>
+
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+                <!-- Tools -->
+                <div id="alarm" class="tab-pane fade">
+                    <div id="alarm" class="tab-pane"></div>
+                    <!-- alarm -->
+                    <div class="alarm txt-dark">
+                        <div class="font-en wide">
+                            <span>alarm</span>
+                            <button type="button" class="btn add" id="alarmAdd" data-dismiss="modal" data-toggle="modal"
+                                data-target="#alarmAddModal">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                        <div>
+                            <table id="alarmTable" class="tableFixed table-default"></table>
+                        </div>
+                    </div>
+                    <!-- alarm modal -->
+                    <!-- add -->
+                    <div class="modal fade" id="alarmAddModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="closeToolModal" data-dismiss="modal">&times;</button>
+                                    <h4 class="font-en" style="font-weight: 600;">Add Alarm</h4>
+                                </div>
+                                <div class="modal-body font-ch">
+                                    <form id="edit-form" role="form" class="form-horizontal">
+                                        <fieldset>
+                                            <!-- time input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label" for="alarmTime">Time
+                                                    <sup style="color: rgb(240, 92, 92)">*</sup>
+                                                </label>
+                                                <div class="col-6 col-md-8">
+                                                    <input type="time" name="alarm_time" id="alarmTime" required
+                                                        oninput="setCustomValidity('')">
+                                                </div>
+                                            </div>
+                                            <!-- week input -->
+                                            <div class="form-group ">
+                                                <label class="col-6 col-md-4 control-label" for="alarmWeek">Week</label>
+                                                <div class="col-6 col-md-8">
+                                                    <label class="weekLabel">
+                                                        <input name="alarmWeek[]" id="alarmWeek" class="weekBox"
+                                                            placeholder="Week" type="checkbox" value="Mon">
+                                                        <span>Mon</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="alarmWeek[]" id="alarmWeek" class="weekBox"
+                                                            placeholder="Week" type="checkbox" value="Tue">
+                                                        <span>Tue</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="alarmWeek[]" id="alarmWeek" class="weekBox"
+                                                            placeholder="Week" type="checkbox" value="Wed">
+                                                        <span>Wed</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="alarmWeek[]" id="alarmWeek" class="weekBox"
+                                                            placeholder="Week" type="checkbox" value="Thu">
+                                                        <span>Thu</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="alarmWeek[]" id="alarmWeek" class="weekBox"
+                                                            placeholder="Week" type="checkbox" value="Fri">
+                                                        <span>Fri</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="alarmWeek[]" id="alarmWeek" class="weekBox"
+                                                            placeholder="Week" type="checkbox" value="Sat">
+                                                        <span>Sat</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="alarmWeek[]" id="alarmWeek" class="weekBox"
+                                                            placeholder="Week" type="checkbox" value="Sun">
+                                                        <span>Sun</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- sound input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label"
+                                                    for="alarmSound">Sound</label>
+                                                <div class="col-6 col-md-8">
+                                                    <select id="alarmSound" name="alarmSound">
+                                                        <option value="Basic" selected>Basic</option>
+                                                        <option value="Electronics">Electronics</option>
+                                                        <option value="Happiness">Happiness</option>
+                                                        <option value="Jazz">Jazz</option>
+                                                        <option value="Power">Power</option>
+                                                        <option value="Rooster">Rooster</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- title input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label"
+                                                    for="alarmTitle">Title</label>
+                                                <div class="col-6 col-md-8">
+                                                    <textarea type="text" name="alarmTitle" id="alarmTitle" rows="2"
+                                                        maxlength="20"></textarea>
+                                                </div>
+                                            </div>
+                                            <!-- confirm button -->
+                                            <div class="form-group">
+                                                <div class="col-6 col-md-4 col-md-offset-4">
+                                                    <button type="button" value="alarmUpdateBtn" id="alarmUpdateBtn"
+                                                        class="btn confirm font-en" style="background-color: #9596C6;
+                                                    border: 2px solid #8c8cb4;">confirm</button>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- edit -->
+                    <div class="modal fade" id="alarmEditModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="closeToolModal" data-dismiss="modal">&times;</button>
+                                    <h4 class="font-en" style="font-weight: 600;">Edit Alarm</h4>
+                                </div>
+                                <div class="modal-body font-ch">
+                                    <form id="edit-form" role="form" class="form-horizontal">
+                                        <fieldset>
+                                            <!-- time input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label" for="modal-edit-Atime">Time
+                                                    <sup style="color: rgb(240, 92, 92)">*</sup>
+                                                </label>
+                                                <div class="col-6 col-md-8">
+                                                    <input type="time" name="modal-edit-Atime" id="modal-edit-Atime"
+                                                        required oninput="setCustomValidity('')" placeholder="Time">
+                                                </div>
+                                            </div>
+                                            <!-- week input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label"
+                                                    for="modal-edit-week">Week</label>
+                                                <div class="col-6 col-md-8">
+                                                    <label class="weekLabel">
+                                                        <input name="modal-edit-Aweek[]" id="modal-edit-Aweek"
+                                                            class="weekBox" placeholder="Week" type="checkbox"
+                                                            value="Mon">
+                                                        <span>Mon</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="modal-edit-Aweek[]" id="modal-edit-Aweek"
+                                                            class="weekBox" placeholder="Week" type="checkbox"
+                                                            value="Tue">
+                                                        <span>Tue</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="modal-edit-Aweek[]" id="modal-edit-Aweek"
+                                                            class="weekBox" placeholder="Week" type="checkbox"
+                                                            value="Wed">
+                                                        <span>Wed</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="modal-edit-Aweek[]" id="modal-edit-Aweek"
+                                                            class="weekBox" placeholder="Week" type="checkbox"
+                                                            value="Thu">
+                                                        <span>Thu</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="modal-edit-Aweek[]" id="modal-edit-Aweek"
+                                                            class="weekBox" placeholder="Week" type="checkbox"
+                                                            value="Fri">
+                                                        <span>Fri</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="modal-edit-Aweek[]" id="modal-edit-Aweek"
+                                                            class="weekBox" placeholder="Week" type="checkbox"
+                                                            value="Sat">
+                                                        <span>Sat</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="modal-edit-Aweek[]" id="modal-edit-Aweek"
+                                                            class="weekBox" placeholder="Week" type="checkbox"
+                                                            value="Sun">
+                                                        <span>Sun</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- sound input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label"
+                                                    for="modal-edit-sound">Sound</label>
+                                                <div class="col-6 col-md-8">
+                                                    <select id="modal-edit-Asound" name="modal-edit-Asound"
+                                                        placeholder="Sound">
+                                                        <option value="Basic">Basic</option>
+                                                        <option value="Electronics">Electronics</option>
+                                                        <option value="Happiness">Happiness</option>
+                                                        <option value="Jazz">Jazz</option>
+                                                        <option value="Power">Power</option>
+                                                        <option value="Rooster">Rooster</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- title input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label"
+                                                    for="modal-edit-Atitle">Title</label>
+                                                <div class="col-6 col-md-8">
+                                                    <textarea type="text" name="modal-edit-Atitle"
+                                                        id="modal-edit-Atitle" rows="2" maxlength="100"></textarea>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" id="alarm-id" name="alarm-id" value="" />
+                                            <!-- confirm button -->
+                                            <div class="form-group">
+                                                <div class="col-6 col-md-4 col-md-offset-4">
+                                                    <button type="button" name="alarmEditBtn" id="alarmEditBtn"
+                                                        class="btn confirm font-en" style="background-color: #9596C6;
+                                                    border: 2px solid #8c8cb4;">confirm</button>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="memo" class="tab-pane fade">
+                    <!-- memo -->
+                    <div class="memo txt-dark">
+                        <div class="font-en wide">
+                            <span>memo</span>
+                            <button type="button" class="btn add" id="memoAdd" data-dismiss="modal" data-toggle="modal"
+                                data-target="#memoAddModal">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                        <div>
+                            <table id="memoTable" class="tableFixed table-default"></table>
+                        </div>
+                    </div>
+                    <!-- memo modal -->
+                    <!-- add -->
+                    <div class="modal fade" id="memoAddModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="closeToolModal" data-dismiss="modal">&times;</button>
+                                    <h4 class="font-en" style="font-weight: 600;">Add Memo</h4>
+                                </div>
+                                <div class="modal-body font-ch">
+                                    <form id="edit-form" role="form" class="form-horizontal">
+                                        <fieldset>
+                                            <!-- time input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label" for="memoTime">Time
+                                                    <sup style="color: rgb(240, 92, 92)">*</sup>
+                                                </label>
+                                                <div class="col-6 col-md-8">
+                                                    <input type="time" name="memo_time" id="memoTime" required
+                                                        oninput="setCustomValidity('')">
+                                                </div>
+                                            </div>
+                                            <!-- date input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label" for="memoDate">Date</label>
+                                                <div class="col-6 col-md-8">
+                                                    <input type="date" name="date" id="memoDate">
+                                                </div>
+                                                <label class="col-6 col-md-4 control-label " for="memoRepeat">Repeat</label>
+                                                <div class="col-6 col-md-8">
+                                                    <label class="repeatLabel">
+                                                        <input name="memoRepeat" id="memoRepeat" class="repeatBox"
+                                                            placeholder="Repeat" type="checkbox" value="yes">
+                                                        <span>✔</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- week input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label" for="memoWeek">Week</label>
+                                                <div class="col-6 col-md-8">
+                                                    <label class="weekLabel">
+                                                        <input name="memoWeek[]" id="memoWeek" class="weekBox"
+                                                            placeholder="Week" type="checkbox" value="Mon">
+                                                        <span>Mon</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="memoWeek[]" id="memoWeek" class="weekBox"
+                                                            placeholder="Week" type="checkbox" value="Tue">
+                                                        <span>Tue</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="memoWeek[]" id="memoWeek" class="weekBox"
+                                                            placeholder="Week" type="checkbox" value="Wed">
+                                                        <span>Wed</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="memoWeek[]" id="memoWeek" class="weekBox"
+                                                            placeholder="Week" type="checkbox" value="Thu">
+                                                        <span>Thu</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="memoWeek[]" id="memoWeek" class="weekBox"
+                                                            placeholder="Week" type="checkbox" value="Fri">
+                                                        <span>Fri</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="memoWeek[]" id="memoWeek" class="weekBox"
+                                                            placeholder="Week" type="checkbox" value="Sat">
+                                                        <span>Sat</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="memoWeek[]" id="memoWeek" class="weekBox"
+                                                            placeholder="Week" type="checkbox" value="Sun">
+                                                        <span>Sun</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- text input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label" for="memoText">Content
+                                                    <sup style="color: rgb(240, 92, 92)">*</sup>
+                                                </label>
+                                                <div class="col-6 col-md-8">
+                                                    <textarea type="text" name="memoText" id="memoText" rows="3"
+                                                        maxlength="100" required
+                                                        oninput="setCustomValidity('')"></textarea>
+                                                </div>
+                                            </div>
+                                            <!-- confirm button -->
+                                            <div class="form-group">
+                                                <div class="col-6 col-md-4 col-md-offset-4">
+                                                    <button type="button" value="memoUpdateBtn" id="memoUpdateBtn"
+                                                        class="btn confirm font-en" style="background-color: #9596C6;
+                                                    border: 2px solid #8c8cb4;">confirm</button>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- edit -->
+                    <div class="modal fade" id="memoEditModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="closeToolModal" data-dismiss="modal">&times;</button>
+                                    <h4 class="font-en" style="font-weight: 600;">Edit Memo</h4>
+                                </div>
+
+                                <div class="modal-body font-ch">
+
+                                    <form id="edit-form" role="form" class="form-horizontal">
+                                        <fieldset>
+                                            <!-- time input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label" for="modal-edit-Mtime">Time
+                                                    <sup style="color: rgb(240, 92, 92)">*</sup>
+                                                </label>
+                                                <div class="col-6 col-md-8">
+                                                    <input type="time" name="modal-edit-Mtime" id="modal-edit-Mtime"
+                                                        required oninput="setCustomValidity('')" placeholder="Time">
+                                                </div>
+                                            </div>
+
+                                            <!-- date input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label"
+                                                    for="modal-edit-Mdate">Date</label>
+                                                <div class="col-6 col-md-8">
+                                                    <input type="date" name="modal-edit-Mdate" id="modal-edit-Mdate"
+                                                        placeholder="Date">
+                                                </div>
+                                                <label class="col-6 col-md-4 control-label " for="modal-edit-MRepeat">Repeat</label>
+                                                <div class="col-6 col-md-8">
+                                                    <label class="repeatLabel">
+                                                        <input name="modal-edit-MRepeat" id="modal-edit-MRepeat" class="repeatBox"
+                                                            placeholder="Repeat" type="checkbox" value="yes">
+                                                        <span>✔</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <!-- week input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label"
+                                                    for="modal-edit-week">Week</label>
+                                                <div class="col-6 col-md-8">
+                                                    <label class="weekLabel">
+                                                        <input name="modal-edit-Mweek[]" id="modal-edit-Mweek"
+                                                            class="weekBox" placeholder="Week" type="checkbox"
+                                                            value="Mon">
+                                                        <span>Mon</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="modal-edit-Mweek[]" id="modal-edit-Mweek"
+                                                            class="weekBox" placeholder="Week" type="checkbox"
+                                                            value="Tue">
+                                                        <span>Tue</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="modal-edit-Mweek[]" id="modal-edit-Mweek"
+                                                            class="weekBox" placeholder="Week" type="checkbox"
+                                                            value="Wed">
+                                                        <span>Wed</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="modal-edit-Mweek[]" id="modal-edit-Mweek"
+                                                            class="weekBox" placeholder="Week" type="checkbox"
+                                                            value="Thu">
+                                                        <span>Thu</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="modal-edit-Mweek[]" id="modal-edit-Mweek"
+                                                            class="weekBox" placeholder="Week" type="checkbox"
+                                                            value="Fri">
+                                                        <span>Fri</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="modal-edit-Mweek[]" id="modal-edit-Mweek"
+                                                            class="weekBox" placeholder="Week" type="checkbox"
+                                                            value="Sat">
+                                                        <span>Sat</span>
+                                                    </label>
+                                                    <label class="weekLabel">
+                                                        <input name="modal-edit-Mweek[]" id="modal-edit-Mweek"
+                                                            class="weekBox" placeholder="Week" type="checkbox"
+                                                            value="Sun">
+                                                        <span>Sun</span>
+                                                    </label>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- text input -->
+                                            <div class="form-group">
+                                                <label class="col-6 col-md-4 control-label"
+                                                    for="modal-edit-Mtext">Content <sup
+                                                        style="color: rgb(240, 92, 92)">*</sup></label>
+                                                <div class="col-6 col-md-8">
+                                                    <textarea type="text" name="modal-edit-Mtext" id="modal-edit-Mtext"
+                                                        required oninput="setCustomValidity('')" rows="3"
+                                                        maxlength="100"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" id="memo-id" name="memo-id" value="" />
+                                            <!-- confirm button -->
+                                            <div class="form-group">
+                                                <div class="col-6 col-md-4 col-md-offset-4">
+                                                    <button type="button" name="memoEditBtn" id="memoEditBtn"
+                                                        class="btn confirm font-en" style="background-color: #9596C6;
+                                                    border: 2px solid #8c8cb4;">confirm</button>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+    <script type="text/javascript" src="firebase.js"></script>
+</body>
+<script src="NEMO.js"></script>
+</html>

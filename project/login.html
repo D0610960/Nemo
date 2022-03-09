@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LOGIN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="./icon/Flaticon.css">
+    <link rel="stylesheet" href="styleNEMO.css" media="all">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        fieldset {
+            background-color: #fbfbfb;
+            border: none;
+            margin: 5px;
+            padding: 30px;
+            display: inline-block;
+        }
+
+        .content {
+            background-color: #fbfbfb;
+            border: none;
+            margin: 5%;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        .nav-pills {
+            padding: 0;
+            display: inline-block;
+            margin: 5px 0px;
+        }
+
+        a.pills {
+            color: #d0d7e2;
+            font-size: large;
+            letter-spacing: 2px;
+            line-height: 2;
+            text-transform: capitalize;
+            width: 120px;
+            border-radius: 0 !important;
+            border-bottom: 2px solid #d0d7e2;
+        }
+
+        a.pills:hover {
+            background-color: #f0f0f0 !important;
+        }
+
+        .nav-pills>li.active>a,
+        .nav-pills>li.active>a:focus,
+        .nav-pills>li.active>a:hover {
+            color: #596d92;
+            background-color: #fbfbfb;
+            border-bottom: 2px solid #596d92;
+        }
+
+        fieldset ul {
+            display: block;
+            list-style: none;
+            text-align: left;
+            margin: auto;
+            padding: 0;
+        }
+
+        input[type=text],
+        input[type=password] {
+            border: none;
+            border-radius: 0;
+            border-bottom: 2px solid #d0d7e2;
+        }
+
+        input[type=text]:focus,
+        input[type=password]:focus {
+            border: none;
+            border-bottom: 2px solid #8295b9;
+            outline: none;
+        }
+
+        .submit {
+            width: 100px;
+            background-color: #8295b9;
+            color: white;
+            padding: 12px;
+            line-height: 1;
+            letter-spacing: 1px;
+            font-size: medium;
+            border-radius: 4px;
+        }
+
+        .submit:hover {
+            color: white !important;
+            background-color: #596d92 !important;
+        }
+
+        input[type=checkbox] {
+            width: 30px;
+            margin: 0;
+            padding: 0;
+            opacity: 0;
+        }
+
+        input[type=checkbox]+label {
+            display: inline-block;
+            padding-left: 40px;
+            line-height: 34px;
+            background: url('icon/checkbox.png') no-repeat;
+            background-position: 0 -2px;
+        }
+
+        input[type=checkbox]:checked+label {
+            background-position: 0 -42px;
+        }
+    </style>
+</head>
+
+<body onload="keepLogin()" >
+    <div class="w3-row w3-padding-32"></div>
+    <div class="wide font-en txt-dark">
+        <p style="font-size:large;">Let's get started now!</p>
+        <p style="font-size:small;">Or create an account if not registered yet</p>
+    </div>
+
+    <div class="w3-container content">
+        <div class="w3-content" style="min-width: 300px">
+            <div class="w3-container">
+                <ul class="nav nav-pills font-bar wide" style="position: relative; left: 0;right: 0;">
+                    <li class="active">
+                        <a data-toggle="pill" href="#login" class="pills">log in</a>
+                    </li>
+                    <li>
+                        <a data-toggle="pill" href="#signup" class="pills">sign up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <div id="login" class="tab-pane fade in active">
+                <!-- login -->
+                <form method="post" id="logForm" class="font-ch">
+                    <fieldset>
+                        <ul>
+                            <li>
+                                <label for="acc">Account :
+                                    <input type="text" id="acc" name="acc" required>
+                                </label>
+                            </li>
+                            <li>
+                                <label for="psw">Password :
+                                    <input type="password" id="psw" name="psw" required autocomplete="current-password"
+                                       >
+                                </label>
+                            </li>
+                            <div class="w3-row w3-padding-16"></div>
+                            <li>
+                                <div style="user-select: none;">
+                                    <input id="keep" type="checkbox" name="keep">
+                                    <label for="keep">Remember Me</label>
+                                </div>
+                            </li>
+                            <button type="submit" class="btn submit">Login</button>
+                        </ul>
+                    </fieldset>
+                </form>
+            </div>
+            <div id="signup" class="tab-pane fade">
+                <!-- sign up -->
+                <form method="post" id="signForm" class="font-ch">
+                    <fieldset>
+                        <ul>
+                            <li>
+                                <label for="Nickname">Nickname :
+                                    <p style="font-size:12px;color:rgb(240, 92, 92);text-transform:none">Only letters
+                                        and spaces</p>
+                                    <input type="text" id="name" name="name" maxlength="20"
+                                        pattern="^(?=.*[A-Za-z])[A-Za-z ]+$" required>
+                                </label>
+                            </li>
+                            <li>
+                                <label for="acc">Account :
+                                    <p style="font-size:12px;color:rgb(240, 92, 92);text-transform:none">You can use
+                                        letters, numbers and underlines</p>
+                                    <input type="text" id="acc" name="acc" pattern="^[A-Za-z0-9_]+$" required
+                                       >
+                                </label>
+                            </li>
+                            <li>
+                                <label for="psw">Password :
+                                    <p style="font-size:12px;color:rgb(240, 92, 92);text-transform:none">
+                                        Use 8 or more characters with a mix of letters, numbers and symbols (@$!%*#?&_)
+                                    </p>
+                                    <input type="password" id="psw" name="psw"
+                                        pattern="^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@$!%*#?&_])[A-Za-z0-9@$!%*#?&_]+$"
+                                        minlength="8" required>
+                                </label>
+                            </li>
+                            <div class="w3-row w3-padding-16"></div>
+                            <button type="submit" class="btn submit">Register</button>
+                        </ul>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+    <script type="text/javascript" src="firebase.js"></script>
+</body>
+<script type="text/javascript" src="login.js"></script>
+
+</html>

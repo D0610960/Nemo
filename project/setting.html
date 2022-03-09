@@ -1,0 +1,235 @@
+<div class="w3-row w3-padding-16"></div>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SETTING</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./icon/Flaticon.css" />
+    <link rel="stylesheet" type="text/css" href="styleNEMO.css" media="all" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body onload="loadDefault()">
+    <!-- navbar sit on top -->
+    <div class="header w3-top" style="z-index: 3">
+        <div class="w3-bar wide font-bar">
+            <a href="NEMO.html" class="w3-bar-item header-button">
+                <i class="fa fa-reply"
+                    style="font-size: 24px; padding: 12px 2px; vertical-align: baseline; line-height: 0.85;"></i>
+            </a>
+            <!-- Right-sided navbar -->
+            <div class="w3-right w3-hide-small w3-hide-medium">
+                <a href="#user" class="w3-bar-item header-button bar-item-medium">user information</a>
+                <a href="#camera" class="w3-bar-item header-button bar-item-medium">camera setting</a>
+                <a href="#walking" class="w3-bar-item header-button bar-item-medium">walking mode</a>
+                <a href="#assistant" class="w3-bar-item header-button bar-item-medium">voice assistant</a>
+                <a href="#" class="w3-bar-item header-button" onclick="logout()">
+                    <i class="fa fa-sign-out"
+                        style="font-size: 24px; padding: 12px 4px; vertical-align: baseline; line-height: 0.85;"></i>
+                </a>
+            </div>
+            <!-- menu icon -->
+            <a href="javascript:void(0)" class="w3-bar-item header-button w3-right w3-hide-large" onclick="openSide()">
+                <i class="fa fa-bars"
+                    style="font-size: 24px; padding: 12px 6px; vertical-align: baseline; line-height: 0.85;"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- sidebar -->
+    <nav class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-hide-large font-bar"
+        style="display: none; z-index: 2" id="sidebar">
+        <div class="w3-container w3-padding-64"></div>
+        <a href="#user" onclick="closeSide()" class="w3-bar-item header-button side-button">user information</a>
+        <a href="#camera" onclick="closeSide()" class="w3-bar-item header-button side-button">camera setting</a>
+        <a href="#walking" onclick="closeSide()" class="w3-bar-item header-button side-button">walking mode</a>
+        <a href="#assistant" onclick="closeSide()" class="w3-bar-item header-button side-button">voice assistant</a>
+        <div class="w3-container w3-padding-16"></div>
+        <a href="#" onclick="logout()" class="w3-bar-item header-button side-button">log out</a>
+    </nav>
+
+    <div class="w3-row w3-padding-64"></div>
+
+    <!-- user information -->
+    <div class="w3-container setting left" id="user">
+        <h3 class="w3-center">
+            user information
+        </h3>
+        <p class="w3-center">
+            Tell NEMO your name, where you live, and your preferences
+        </p>
+        <p class="w3-center">
+            Press the button to manage face photos of your family members
+        </p>
+        <img src="./line.png" class="line">
+        <div class="w3-container w3-padding-16">
+            <label>nickname&nbsp;:&nbsp;
+                <input type="text" id="userName" class="font-ch" style="max-width: 220px;" onchange="setName()"
+                    maxlength="20" required pattern="^(?=.*[A-Za-z])[A-Za-z ]+$" oninput="setCustomValidity('')" />
+            </label>
+            <button type="button" class="btn add" id="member"
+                style="background-color: #9596C6;border:2px solid #8c8cb4;margin: 0 0 4px 0;">
+                <i class="fa fa-picture-o"></i>
+            </button>
+        </div>
+        <div class="w3-container w3-padding-16">
+            <label>location&nbsp;:&nbsp;</label><br>
+            <select id="cityList" class="font-ch" style="max-width: 220px;" onchange="changeCity(this)"></select>
+            <select id="distList" class="font-ch" style="max-width: 220px;"
+                onchange="setLoc(cityList,distList)"></select>
+
+        </div>
+        <div class="w3-container w3-padding-16">
+            <label class="switchLabel">temperature&nbsp;unit&nbsp;:&nbsp;</label>
+            <label class="switch">
+                <span id="showTemp" class="txt-switch txt-temp"></span>
+                <input type="checkbox" class="buttonTemp" id="tempMode" onchange="setTempMode()" />
+                <span class="sliderTemp"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- camera setting -->
+    <div class="w3-container setting right" id="camera">
+        <h3 class="w3-center">
+            camera setting
+        </h3>
+        <p class="w3-center">
+            Whether to turn on the camera
+        </p>
+        <p class="w3-center">
+            If not, you can still schedule the monitoring function to be started automatically
+        </p>
+        <img src="./line.png" class="line">
+        <div class="w3-container w3-padding-16">
+            <label class="switchLabel">camera switch&nbsp;:&nbsp;</label>
+            <label class="switch">
+                <span id="showCam" class="txt-switch txt-cam"></span>
+                <input type="checkbox" class="buttonCam" id="camMode" onchange="setCamMode()" />
+                <span class="sliderCam"></span>
+            </label>
+        </div>
+        <div class="w3-container w3-padding-16" id="timedOn" style="display: none">
+            <label class="switchLabel">timed on&nbsp;:&nbsp;</label>
+            <label class="switch">
+                <span id="showTimedOn" class="txt-switch txt-cam"></span>
+                <input type="checkbox" class="buttonCam" id="camTimedOn" onchange="setTimedOn()" />
+                <span class="sliderCam"></span>
+            </label><br>
+            <input type="time" id="camStart" class="font-ch" style="max-width: 220px;" onchange="setCamStart(this)"
+                disabled />
+            -
+            <input type="time" id="camEnd" class="font-ch" style="max-width: 220px;" onchange="setCamEnd(this)"
+                disabled />
+        </div>
+    </div>
+
+    <!-- walking mode -->
+    <div class="w3-container setting left" id="walking">
+        <h3 class="w3-center">
+            walking mode
+        </h3>
+        <p class="w3-center">
+            Decide how NEMO will move
+        </p>
+        <p class="w3-center">
+            Select control mode to visit the remote control page
+        </p>
+        <img src="./line.png" class="line">
+        <!-- walking mode buttons-->
+        <div class="w3-container" style="padding: 16px 0">
+            <div class="w3-center">
+                <div class="w3-third">
+                    <button class="buttonSet" name="walk" id="static" onclick="setWalkMode(this)">
+                        static
+                    </button>
+                </div>
+                <div class="w3-third">
+                    <button class="buttonSet" name="walk" id="auto" onclick="setWalkMode(this)">
+                        auto
+                    </button>
+                </div>
+                <div class="w3-third">
+                    <button class="buttonSet" name="walk" id="control" onclick="setWalkMode(this)">
+                        control
+                    </button>
+                    <div class="w3-row w3-padding-16"></div>
+                    <button class="buttonSet" id="wheel" style="display: none">
+                        let's play
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- voice assistant -->
+    <div class="w3-container setting right" id="assistant">
+        <h3 class="w3-center">
+            voice assistant
+        </h3>
+        <p class="w3-center">
+            Adjust the volume
+        </p>
+        <p class="w3-center">
+            Choose a character, NEMO will react differently
+        </p>
+        <img src="./line.png" class="line">
+        <!-- volume -->
+        <div class="w3-container w3-padding-16 w3-center">
+            <i id="iconVol" class="fa fa-volume-up" style="font-size: 24px;"></i>
+            <div style="width:60%;display:inline-block;position:relative;margin:0 12px;">
+                <input type="range" min="0" max="100" class="sliderVol" id="rangeVol" oninput="changeVol(this)">
+            </div>
+            <span id="volume" class="txt-vol font-ch"></span>
+        </div>
+        <!-- character buttons-->
+        <div class="w3-container" style="padding: 16px 0px">
+            <div class="w3-center">
+                <div class="w3-third">
+                    <button class="buttonSet" name="char" id="溫柔" onclick="setChar(this)">
+                        gentle
+                    </button>
+                    <div class="w3-row buttonPad"></div>
+                    <button class="buttonSet" name="char" id="沉穩" onclick="setChar(this)">
+                        mature
+                    </button>
+                </div>
+                <div class="w3-third">
+                    <button class="buttonSet" name="char" id="欠揍" onclick="setChar(this)">
+                        naughty
+                    </button>
+                    <div class="w3-row buttonPad"></div>
+                    <button class="buttonSet" name="char" id="傲嬌" onclick="setChar(this)">
+                        tsundere
+                    </button>
+                </div>
+                <div class="w3-third">
+                    <button class="buttonSet" name="char" id="搞怪" onclick="setChar(this)">
+                        funny
+                    </button>
+                    <div class="w3-row buttonPad"></div>
+                    <button class="buttonSet" name="char" id="活潑" onclick="setChar(this)">
+                        active
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+    <script type="text/javascript" src="firebase.js"></script>
+</body>
+<script type="text/javascript" src="setting.js"></script>
+
+
+</html>
