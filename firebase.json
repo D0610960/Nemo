@@ -1,0 +1,13 @@
+{
+  "hosting": {
+    "target": "nemo",
+    "public": "project",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/login.html"
+      }
+    ]
+  }
+}
